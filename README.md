@@ -15,12 +15,13 @@ npm run dev
 
 ## 修改内容
 
-- `app/posts.ts`：文章数组，包含标题、日期、分类、标签、摘要与正文段落。新增时复制一个对象，设置唯一 slug。列表按照数组顺序显示，最新文章放最前。
+- `content/posts/*.md`：每篇文章一个 Markdown 文件，按日期从新到旧自动排列。
+- 写作流程和字段说明见 [WRITING.md](./WRITING.md)，模板见 [content/posts/_template.md](./content/posts/_template.md)。
 - `app/page.tsx`：站名、首页介绍、关于页面。
 - `app/globals.css`：配色、字体与响应式布局。
 - `app/layout.tsx`：网站标题与描述。
 
-此版文章使用 URL hash（如 `#learning-loop`），便于静态托管和直接分享。不提供后台编辑器；独立文章的服务端 SEO 元数据与 Markdown 写作流程可在后续版本加入。
+此版文章使用 URL hash（如 `#learning-loop`），便于静态托管和直接分享。不提供后台编辑器；支持 Markdown 写作；独立文章的服务端 SEO 元数据可在后续版本加入。
 
 ## 发布到 GitHub Pages
 

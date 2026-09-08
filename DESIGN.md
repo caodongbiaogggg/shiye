@@ -67,8 +67,8 @@
 
 - 分类切换只过滤文章；标签是文章信息，不伪装成可点击入口。
 - 文章与关于页使用 hash 地址，如 `#learning-loop`、`#about`；浏览器前进后退通过 hashchange 更新。
-- 文章数据在 `app/posts.ts`，数组顺序就是展示顺序，最新文章放前面。slug 必须唯一，已发布文章尽量保持稳定地址。
-- 当前正文由小标题和段落组成；没有 Markdown 编辑器、后台、搜索或登录。
+- 文章源文件在 `content/posts/*.md`，按日期倒序排列；文件名作为默认 slug，必须唯一，已发布文章保持稳定地址。
+- 正文使用 Markdown，支持 GFM 表格、列表、引用、代码、链接和图片；没有网页编辑后台、搜索或登录。
 - 独立文章的服务端 SEO 元数据尚未实现；浏览器页面标题会随阅读文章更新。
 - 首页分类、导航和正文保持一致的用词；内容由真实写作需求驱动扩展。
 
@@ -76,7 +76,7 @@
 
 | 想修改什么 | 文件 |
 | --- | --- |
-| 文章标题、摘要、分类、标签、日期与正文 | `app/posts.ts` |
+| 文章标题、摘要、分类、标签、日期与正文 | `content/posts/*.md` |
 | 站名、首页布局、个人介绍、阅读组件 | `app/page.tsx` |
 | 配色、字号、间距、断点、动效 | `app/globals.css` |
 | 默认网页标题、描述、语言 | `app/layout.tsx` |
@@ -99,6 +99,10 @@ GitHub Pages 子路径由构建后的 `prepare-pages.mjs` 处理，读取 BASE_P
 
 2026-09-09 用户确定仓库为 `https://github.com/caodongbiaogggg/shiye`。发布目标为 GitHub Pages 项目站点 `https://caodongbiaogggg.github.io/shiye/`，自定义域名留待后续讨论。部署是否成功以 GitHub Actions 与线上检查为准。
 
-后续可根据用户提供的昵称、简介、真实文章替换示例。Markdown 写作、独立文章路由、搜索等属于可讨论的后续方向，尚未列为已授权任务。
+后续可根据用户提供的昵称、简介、真实文章替换示例。Markdown 写作已于 2026-09-09 按用户要求实现。独立文章路由、搜索属于后续方向，尚未列为已授权任务。
 
 维护此文档时补记重要设计变更及原因；普通内容更新无需重写设计基线。
+
+## Markdown 改造记录（2026-09-09）
+
+保留现有视觉与文章 hash 地址。通过 scripts/posts.mjs 读取 YAML 文章信息，校验必填项、有效日期、分类和重复地址，跳过 draft: true 与下划线开头的模板，构建时生成被 Git 忽略的 app/posts.generated.json。Vite 开发时监听 Markdown 增删改。正文由 react-markdown + remark-gfm 渲染，不执行原始 HTML。新增文章默认不是示例；原四篇通过 sample: true 保留示例标记。草稿仅从网站排除，公开仓库内的文件仍公开。

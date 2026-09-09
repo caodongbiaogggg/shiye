@@ -2,6 +2,8 @@
 
 每篇文章一个 `.md` 文件，放在 `content/posts`。提交到 GitHub 的 main 分支后会自动发布，等待 Actions 显示绿色完成即可。
 
+也可以直接把本地 Markdown 文件路径或附件及配图交给助手，按 [PUBLISHING.md](./PUBLISHING.md) 自动完成整理和发布，保持当前网页风格。如果希望先查看排版，注明“先预览”。
+
 ## 最简单的方式：直接在 GitHub 写
 
 1. 打开 [文章文件夹](https://github.com/caodongbiaogggg/shiye/tree/main/content/posts)。

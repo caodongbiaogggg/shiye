@@ -61,7 +61,7 @@
 
 app/posts.generated.json 为忽略提交的生成文件。react-markdown + remark-gfm 渲染正文，不执行原始 HTML。支持表格、代码、图片、列表等；当前不支持正文锚点与脚注回跳。独立文章 SEO 尚未实现。
 
-保留用户已发布的 Codex 重连文章及两张图片；其他四篇仍是明确标注的示例。
+保留用户已发布的 Codex 重连文章及两张图片；四篇初始示例已按用户要求删除，写作模板仍保留。
 
 使用 Node.js 22 构建。Node.js 26 在本机曾出现构建收尾原生错误。GitHub Pages 子路径由 prepare-pages.mjs 读取 BASE_PATH 后处理；不要直接恢复 next.config.ts 的 basePath，初版曾导致根入口无法导出。
 
